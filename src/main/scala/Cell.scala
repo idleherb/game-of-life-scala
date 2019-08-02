@@ -4,10 +4,10 @@ case class Cell(val alive: Boolean) {
   }
 
   private def handleAlive(neighbours: Int, rule: Rule): Cell = {
-    Cell(alive = rule.survive.contains(neighbours))
+    Cell(alive = rule.survive contains neighbours)
   }
 
   private def handleDead(neighbours: Int, rule: Rule): Cell = {
-    Cell(alive = rule.birth.contains(neighbours))
+    Cell(alive = rule.birth contains neighbours)
   }
 }

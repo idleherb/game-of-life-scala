@@ -6,7 +6,7 @@ object Rule {
   }
 
   private def validate(rule: String): Boolean = {
-    rule.matches("^B\\d*/S\\d*$")
+    rule matches "^B\\d*/S\\d*$"
   }
 
   private def parseValidatedRule(rule: String):  Option[Rule] = {

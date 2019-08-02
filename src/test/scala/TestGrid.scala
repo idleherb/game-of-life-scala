@@ -1,6 +1,6 @@
-import org.scalatest.{FeatureSpec, Matchers}
+import org.scalatest.{FunSpec, Matchers}
 
-class TestGrid extends FeatureSpec with Matchers {
+class TestGrid extends FunSpec with Matchers {
 
   private def makeGrid(v: Vector[Boolean]) = {
     Grid(
@@ -18,12 +18,12 @@ class TestGrid extends FeatureSpec with Matchers {
 
   private val defaultRule = Rule.parse("B3/S23").get
 
-  feature("Grid") {
-    scenario("Given the default rule, a grid with only dead cells doesn't change in a step") {
+  describe("Grid") {
+    it("Given the default rule, a grid with only dead cells doesn't change in a step") {
       emptyGrid.step(defaultRule) shouldBe emptyGrid
     }
 
-    scenario("An alive cell with no neighbours dies. Outside grid cells are dead by default.\"") {
+    it("An alive cell with no neighbours dies. Outside grid cells are dead by default.\"") {
       val grid1 = makeGrid(Vector(
         false, false, false,
         false, true,  false,
@@ -39,7 +39,7 @@ class TestGrid extends FeatureSpec with Matchers {
       grid2.step(defaultRule) shouldBe emptyGrid
     }
 
-    scenario("An alive cell with two or three neighbours lives on") {
+    it("An alive cell with two or three neighbours lives on") {
       val grid1 = makeGrid(Vector(
         true,  true,  false,
         true,  false, false,
@@ -63,7 +63,7 @@ class TestGrid extends FeatureSpec with Matchers {
       ))
     }
 
-    scenario("An alive cell with more than three neighbours dies") {
+    it("An alive cell with more than three neighbours dies") {
       val grid = makeGrid(Vector(
         true,  false, true,
         false, true,  false,
@@ -76,7 +76,7 @@ class TestGrid extends FeatureSpec with Matchers {
       ))
     }
 
-    scenario("A dead cell with exactly three neighbours comes to life") {
+    it("A dead cell with exactly three neighbours comes to life") {
       val grid = makeGrid(Vector(
         true,  false, true,
         false, false, false,

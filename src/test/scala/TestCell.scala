@@ -1,8 +1,8 @@
-import org.scalatest.{FeatureSpec, Matchers}
+import org.scalatest.{FunSpec, Matchers}
 
-class TestCell extends FeatureSpec with Matchers {
-  feature("cell") {
-    scenario("run one step given the default rule") {
+class TestCell extends FunSpec with Matchers {
+  describe("cell") {
+    it("run one step given the default rule") {
       Rule.parse("B3/S23").foreach(rule => {
         Cell(false).step(rule, 0).alive shouldBe false
         Cell(false).step(rule, 1).alive shouldBe false
