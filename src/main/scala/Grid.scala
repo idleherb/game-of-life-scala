@@ -11,7 +11,7 @@ case class Grid(val width: Int, val height: Int, val v: Vector[Cell]) {
   }
 
   private def countAliveNeighbours(coords: Coords): Int = {
-    val (x, y) = (coords.x, coords.y);
+    val Coords(x, y) = coords;
     val neighbours = Vector(
       cellAt(Coords(x - 1, y - 1)), cellAt(Coords(x, y - 1)), cellAt(Coords(x + 1, y - 1)),
       cellAt(Coords(x - 1, y)),                               cellAt(Coords(x + 1, y)),
